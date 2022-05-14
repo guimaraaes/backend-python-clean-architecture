@@ -15,7 +15,7 @@ def test_insert_user():
     engine = db_connection.get_engine()
 
     new_user = user_repository.insert_user(name, password)
-    query_user = engine.execute("SELECT * FROM users WHERE id='{}';".format(new_user.id)).fetcheone()
+    query_user = engine.execute("SELECT * FROM users WHERE id='{}';".format(new_user.id)).fetchone()
 
     assert new_user.id == query_user.id
     assert new_user.name == query_user.name
