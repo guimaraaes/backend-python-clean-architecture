@@ -36,7 +36,7 @@ class UserRepository(UsersRepositoryInterface):
         return None
 
     @classmethod
-    def select_user(clc, user_id=None, name: str = None) -> List[Users]:
+    def select_user(cls, user_id=None, name: str = None) -> List[Users]:
         """
         Select data in user entity by id and/or name
         :param - user_id: Id of the registry
