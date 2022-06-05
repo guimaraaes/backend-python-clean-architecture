@@ -8,8 +8,8 @@ from .find_pet_controller import FindPetController
 faker = Faker()
 
 
-def test_handle_user_id():
-    """testing handle method"""
+def test_route_user_id():
+    """testing route method"""
     find_pet_use_case = FindPetSpy(PetRepositorySpy())
     find_pet_controller = FindPetController(find_pet_use_case)
     http_request = HttpRequest(
@@ -17,7 +17,7 @@ def test_handle_user_id():
             "user_id": faker.random_number(),
         }
     )
-    response = find_pet_controller.handle(http_request)
+    response = find_pet_controller.route(http_request)
 
     assert (
         find_pet_use_case.by_user_id_param["user_id"] == http_request.query["user_id"]
@@ -27,14 +27,14 @@ def test_handle_user_id():
     assert response.body
 
 
-def test_handle_user_id_and_pet_id():
-    """testing handle method"""
+def test_route_user_id_and_pet_id():
+    """testing route method"""
     find_pet_use_case = FindPetSpy(PetRepositorySpy())
     find_pet_controller = FindPetController(find_pet_use_case)
     http_request = HttpRequest(
         query={"user_id": faker.random_number(), "pet_id": faker.random_number()}
     )
-    response = find_pet_controller.handle(http_request)
+    response = find_pet_controller.route(http_request)
 
     assert (
         find_pet_use_case.by_pet_id_and_user_id_param["user_id"]
@@ -49,13 +49,13 @@ def test_handle_user_id_and_pet_id():
     assert response.body
 
 
-def test_handle_no_query_param():
-    """testing handle method with no query param"""
+def test_route_no_query_param():
+    """testing route method with no query param"""
     find_pet_use_case = FindPetSpy(PetRepositorySpy())
     find_pet_controller = FindPetController(find_pet_use_case)
     http_request = HttpRequest()
 
-    response = find_pet_controller.handle(http_request)
+    response = find_pet_controller.route(http_request)
 
     assert find_pet_use_case.by_user_id_param == {}
     assert find_pet_use_case.by_pet_id_param == {}

@@ -8,15 +8,15 @@ from .find_user_controller import FindUserController
 faker = Faker()
 
 
-def test_handle():
-    """testing handle method"""
+def test_route():
+    """testing route method"""
     find_user_use_case = FindUserSpy(UserRepositorySpy())
     find_user_controller = FindUserController(find_user_use_case)
     http_request = HttpRequest(
         query={"user_id": faker.random_number(), "user_name": faker.word()}
     )
 
-    response = find_user_controller.handle(http_request)
+    response = find_user_controller.route(http_request)
 
     assert (
         find_user_use_case.by_id_and_name_param["user_id"]
@@ -31,13 +31,13 @@ def test_handle():
     assert response.body
 
 
-def test_handle_no_query_param():
-    """testing handle method with no query param"""
+def test_route_no_query_param():
+    """testing route method with no query param"""
     find_user_use_case = FindUserSpy(UserRepositorySpy())
     find_user_controller = FindUserController(find_user_use_case)
     http_request = HttpRequest()
 
-    response = find_user_controller.handle(http_request)
+    response = find_user_controller.route(http_request)
 
     assert find_user_use_case.by_id_and_name_param == {}
     assert find_user_use_case.by_id_param == {}
