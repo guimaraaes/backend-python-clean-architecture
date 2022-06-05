@@ -16,7 +16,7 @@ class RegisterPet(RegisterPetInterface):
     def registry(
         self, name: str, specie: str, user_information: Dict[int, str], age: int = None
     ) -> Dict[bool, Pets]:
-        """Register Pet
+        """Registry Pet
         :param  - name: pet name
                 - specie: type of the specie
                 - age: age of the pet
