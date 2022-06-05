@@ -8,6 +8,6 @@ class RegisterUser(ABC):
     """intergace to RegisterUSer use case"""
 
     @abstractclassmethod
-    def register(cls, name: str, password: str) -> Dict[bool, Users]:
-        """case"""
+    def registry(cls, name: str, password: str) -> Dict[bool, Users]:
+        """use case"""
         raise Exception("should implement method: register")

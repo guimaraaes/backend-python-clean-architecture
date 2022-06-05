@@ -11,7 +11,7 @@ class RegisterUser(RegisterUserInterface):
     def __init__(self, user_repository: Type[UserRepository]):
         self.user_repository = user_repository
 
-    def register(self, name: str, password: str) -> Dict[bool, Users]:
+    def registry(self, name: str, password: str) -> Dict[bool, Users]:
         """Register user use case
         :param  - name: person name
                 - password: password of the person

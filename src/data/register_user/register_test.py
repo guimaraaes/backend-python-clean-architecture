@@ -6,12 +6,12 @@ from .register import RegisterUser
 faker = Faker()
 
 
-def test_register():
+def test_registry():
     """testing register method"""
     user_repo = UserRepositorySpy()
     register_user = RegisterUser(user_repo)
     attributes = {"name": faker.name(), "password": faker.name()}
-    response = register_user.register(
+    response = register_user.registry(
         name=attributes["name"], password=attributes["password"]
     )
 
@@ -27,7 +27,7 @@ def test_register_fail():
     user_repo = UserRepositorySpy()
     register_user = RegisterUser(user_repo)
     attributes = {"name": faker.random_number(digits=2), "password": faker.name()}
-    response = register_user.register(
+    response = register_user.registry(
         name=attributes["name"], password=attributes["password"]
     )
 
