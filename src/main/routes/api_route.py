@@ -2,7 +2,7 @@ from flask import Blueprint, jsonify, request
 from src.main.adapter import flask_adapter
 from src.main.composer import register_user_composer
 
-api_routes_bp = Blueprint("api1_routes", __name__)
+api_routes_bp = Blueprint("api_routes", __name__)
 
 
 @api_routes_bp.route("/api/users", methods=["POST"])
@@ -10,7 +10,7 @@ def register_user():
     """register user route"""
 
     message = None
-    response = flask_adapter(request=request, api_route=register_user_composer)
+    response = flask_adapter(request=request, api_route=register_user_composer())
 
     if response.status_code < 300:
         message = {

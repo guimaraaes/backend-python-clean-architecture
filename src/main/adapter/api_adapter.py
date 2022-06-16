@@ -1,6 +1,6 @@
-from sqlite3 import IntegrityError
 from typing import Type
 
+from sqlalchemy.exc import IntegrityError
 from src.main.interface import RouteInterface as Route
 from src.presenters.errors import HttpErrors
 from src.presenters.helpers import HttpRequest, HttpResponse
